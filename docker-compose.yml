@@ -1,0 +1,21 @@
+services:
+  mysql:
+    image: mysql:8.0.44-debian
+    container_name: mysql
+    restart: always
+
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: home-energy-tracker
+      MYSQL_PASSWORD: 1234
+
+    ports:
+      - "3306:3306"
+
+    volumes:
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - mysql_data:/var/lib/mysql
+      - mysql_data:/var/log/mysql
+
+volumes:
+  mysql_data:
