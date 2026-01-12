@@ -36,4 +36,5 @@ target
 mvnw
 mvnw.cmd
 pom.xml
+./idea
 
