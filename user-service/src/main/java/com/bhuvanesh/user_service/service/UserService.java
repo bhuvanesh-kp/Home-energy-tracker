@@ -6,8 +6,6 @@ import com.bhuvanesh.user_service.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 @Slf4j
 public class UserService {
@@ -20,7 +18,7 @@ public class UserService {
 
 
     public UserDto createNewUser(UserDto user){
-        log.info("user created with details {}", user) ;
+        //log.info("user created with details {}", user) ;
 
         User createdUser = User.builder()
                 .name(user.getName())
@@ -36,7 +34,7 @@ public class UserService {
     }
 
     public UserDto getUserById(final Long id) {
-        log.info("find user with user id {}", id);
+        //log.info("find user with user id {}", id);
         return userRepository.findById(id)
                 .map(this::toDto)
                 .orElse(null);
@@ -61,7 +59,7 @@ public class UserService {
     }
 
     public void deleteUser(Long id) {
-        log.info("delete user with user id {}", id);
+        //log.info("delete user with user id {}", id);
         User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("user not found"));
         userRepository.delete(user);
     }
