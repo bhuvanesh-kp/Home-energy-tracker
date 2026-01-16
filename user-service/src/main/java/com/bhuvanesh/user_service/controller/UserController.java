@@ -2,6 +2,9 @@ package com.bhuvanesh.user_service.controller;
 
 import com.bhuvanesh.user_service.dto.UserDto;
 import com.bhuvanesh.user_service.service.UserService;
+
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,14 +28,12 @@ public class UserController {
     }
 
     // GET ALL USERS
-
-    /*
     @GetMapping
     public ResponseEntity<List<UserDto>> getAllUsers(){
         List<UserDto> users = userService.getAllUsers();
         return ResponseEntity.ok(users);
     }
-    */
+
 
     // CREATE USER
     @PostMapping
