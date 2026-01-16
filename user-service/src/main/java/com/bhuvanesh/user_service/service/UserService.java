@@ -4,6 +4,10 @@ import com.bhuvanesh.user_service.dto.UserDto;
 import com.bhuvanesh.user_service.entity.User;
 import com.bhuvanesh.user_service.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -40,11 +44,6 @@ public class UserService {
                 .orElse(null);
     }
 
-    /*public List<UserDto> getAllUsers(){
-        List<User> users = userRepository.findAll();
-        return null;
-    }*/
-
     public void updateUser(final Long id, UserDto userDetails) throws IllegalArgumentException{
         User user = userRepository.findById(id).orElseThrow();
 
@@ -74,6 +73,13 @@ public class UserService {
                 .alerting(user.getUserNotification())
                 .alertingThreshold(user.getEnergyAlertingThreshold())
                 .build();
+    }
+
+
+    public List<UserDto> getAllUsers() {
+        return userRepository.findAll().stream()
+                .map(this::toDto)
+                .collect(Collectors.toList());
     }
 
 }
